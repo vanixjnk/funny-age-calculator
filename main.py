@@ -10,12 +10,15 @@ def chay_thanh_tien_do():
         bien_tien_do.set(i + 1)
         thanh_tien_do.update_idletasks()
     tuoi = nhap_tuoi.get()
-    nhan_ket_qua.config(text=f"Tuổi của bạn là: {tuoi}")
+    ngay = nhap_ngay.get()
+    nhan_ket_qua.config(text=f"Tuổi của bạn là: {tuoi} tương ưng với {ngay}")
 
 def bat_dau():
     tuoi = nhap_tuoi.get()
+    ngay = nhap_ngay.get()
     if tuoi.isdigit():
         tuoi = int(tuoi)
+        ngay = str(ngay)
         threading.Thread(target=chay_thanh_tien_do).start()
     else:
         nhan_ket_qua.config(text="Vui lòng nhập một số hợp lệ.")
@@ -28,6 +31,12 @@ nhan_tuoi.pack(pady=10)
 
 nhap_tuoi = tk.Entry(cua_so)
 nhap_tuoi.pack(pady=5)
+
+nhan_ngay = tk.Label(cua_so, text="Nhập ngày tháng năm sinh của bạn:")
+nhan_ngay.pack(pady=10)
+
+nhap_ngay = tk.Entry(cua_so)
+nhap_ngay.pack(pady=5)
 
 nut_bat_dau = tk.Button(cua_so, text="Bắt đầu", command=bat_dau)
 nut_bat_dau.pack(pady=10)
